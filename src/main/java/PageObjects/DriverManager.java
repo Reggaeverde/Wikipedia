@@ -106,7 +106,25 @@ public class DriverManager {
 
     public void captura(String ruta) throws IOException {
         Screenshot screenshot= new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
-        String dir = System.getProperty("user.dir") + File.separator + "target";
-        ImageIO.write(screenshot.getImage(), "jpg", new File(dir+ruta));
+        String dir = System.getProperty("user.dir") + File.separator + "Wikipedia"+ File.separator +"Capturas";
+        carpeta(dir);
+        ImageIO.write(screenshot.getImage(), "jpg", new File(dir+ File.separator + ruta));
+    }
+
+    public void carpeta(String dir) {
+
+        File carpeta = new File(dir);
+
+        // Verifica si la carpeta no existe
+        if (!carpeta.exists()) {
+            // Intenta crear la carpeta
+            if (carpeta.mkdirs()) {
+                System.out.println("Carpeta creada con éxito.");
+            } else {
+                System.out.println("No se pudo crear la carpeta.");
+            }
+        } else {
+            System.out.println("La carpeta ya existe.");
+        }
     }
 }

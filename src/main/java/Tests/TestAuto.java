@@ -19,6 +19,8 @@ public class TestAuto {
         Wikipedia wiki = new Wikipedia(google.getDriver());
         System.out.println("Buscamos en la pantalla las palabras 'primer proceso'");
         wiki.buscarTexto("primer proceso");
-        driver.takeSnapShot("../../resources");
+        System.out.println("Guardando Captura en la carpeta Target");
+        driver.captura("Captura.jpg");
+        driver.cerrarNavegador();
     }
 }
